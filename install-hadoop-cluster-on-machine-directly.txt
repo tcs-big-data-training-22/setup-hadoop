@@ -1,0 +1,32 @@
+sudo apt update
+sudo apt install default-jdk default-jre -y
+apt install openssh-server openssh-client -y
+wget https://downloads.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
+tar -xvzf hadoop-3.3.1.tar.gz
+sudo mv hadoop-3.3.1 /usr/local/hadoop
+sudo mkdir /usr/local/hadoop/logs
+sudo chown -R hadoop:hadoop /usr/local/hadoop
+sudo nano ~/.bashrc
+source ~/.bashrc
+which javac
+readlink -f /usr/bin/javac
+sudo nano $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+cd /usr/local/hadoop/lib
+sudo wget https://jcenter.bintray.com/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar
+hadoop version
+sudo nano $HADOOP_HOME/etc/hadoop/core-site.xml
+sudo mkdir -p /home/hadoop/hdfs/{namenode,datanode}
+sudo chown -R hadoop:hadoop /home/hadoop/hdfs
+sudo nano $HADOOP_HOME/etc/hadoop/hdfs-site.xml
+sudo nano $HADOOP_HOME/etc/hadoop/mapred-site.xml
+sudo nano $HADOOP_HOME/etc/hadoop/yarn-site.xml
+hdfs namenode -format
+start-dfs.sh
+start-yarn.sh
+jps
+history
+
+curl localhost:9870
+curl localhost:9864
+curl localhost:50070
+curl localhost:8088
